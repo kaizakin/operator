@@ -36,6 +36,12 @@ jobs:
         chmod +x "${GITHUB_WORKSPACE}/.github/draft_release_notes.sh"
         "${GITHUB_WORKSPACE}/.github/draft_release_notes.sh"
 
+        # MANUALLY inject data 
+        echo "* #123 by @kaizakin: this is a test" >> Features.md
+        echo "* #124 by @kaizakin: This is a fixes test" >> Fixes.md
+        
+        cat Features.md Fixes.md API.md Docs.md Misc.md > Changes.md
+
     - name: Draft release 
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
