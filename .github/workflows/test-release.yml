@@ -40,7 +40,9 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        # Check if file exists first
+        git tag --list
+        git branch --show-current
+        git log -n 5
         if [ ! -f Changes.md ]; then
           echo "ERROR: Changes.md was not generated!"
           exit 1
